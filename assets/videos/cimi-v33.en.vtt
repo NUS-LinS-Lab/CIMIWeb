@@ -1,0 +1,106 @@
+WEBVTT
+
+00:00:00.188 --> 00:00:03.195
+CIMI learns dexterity from demonstrated contact.
+
+00:00:03.917 --> 00:00:06.863
+Human-centric methods preserve natural dexterity,
+
+00:00:07.043 --> 00:00:09.593
+but retargeting may misalign contact.
+
+00:00:09.772 --> 00:00:12.415
+Robot-centric interfaces ease transfer,
+
+00:00:12.595 --> 00:00:16.556
+but their hardware can constrain natural human dexterity during demonstration.
+
+00:00:17.479 --> 00:00:24.467
+Through a shared contact interface, CIMI transfers human-demonstrated skills across robot hands.
+
+00:00:25.136 --> 00:00:27.870
+Each CIMI demonstration combines multiple views.
+
+00:00:28.036 --> 00:00:30.893
+Contact cameras show finger-object interaction.
+
+00:00:31.036 --> 00:00:33.796
+Wrist and web-space cameras capture the wider scene.
+
+00:00:33.936 --> 00:00:36.615
+Tracking cameras recover contact-surface motion.
+
+00:00:44.707 --> 00:00:49.754
+From human videos, tracking and calibrated transforms recover contact-surface motion.
+
+00:00:50.607 --> 00:00:55.206
+Retargeted contact-surface trajectories supervise robot actions.
+
+00:00:56.107 --> 00:01:00.904
+Context and contact observations, with relative contact poses, feed the planner.
+
+00:01:01.407 --> 00:01:06.655
+Its predicted contact trajectories guide a controller that coordinates wrist and fingers.
+
+00:01:07.377 --> 00:01:16.119
+Now, we pair human demonstrations with autonomous LEAP rollouts. Matching views show the coin’s edge engagement, wedging, and lift.
+
+00:01:17.377 --> 00:01:22.489
+Matching fingertip views show how the human and LEAP pinch the one-centimeter cube.
+
+00:01:24.606 --> 00:01:28.273
+The human and LEAP follow the same longer sequence to retrieve a letter.
+
+00:01:28.606 --> 00:01:30.482
+The fingertip wedges beneath the flap,
+
+00:01:33.106 --> 00:01:33.676
+opens it,
+
+00:01:39.106 --> 00:01:40.744
+then pinches and extracts the letter.
+
+00:01:45.527 --> 00:01:50.912
+For the bulb, shared views reveal three-finger coordination through repeated screwing and releasing.
+
+00:01:51.327 --> 00:01:55.303
+Local feedback supports the changing contacts until the bulb seats and lights.
+
+00:01:57.883 --> 00:01:59.405
+Four key observations.
+
+00:01:59.733 --> 00:02:03.309
+First, different robot hands learn from the same human demonstrations.
+
+00:02:03.533 --> 00:02:06.356
+Shared contact geometry enables reuse.
+
+00:02:06.583 --> 00:02:10.618
+Across LEAP and Wuji, overall success reaches eighty point eight percent.
+
+00:02:11.841 --> 00:02:15.658
+Second, contact cameras improve contact establishment.
+
+00:02:15.941 --> 00:02:22.621
+Local views guide precise fingertip contact. Without them, the baseline misses or displaces objects.
+
+00:02:22.991 --> 00:02:27.922
+Adding contact cameras raises mean success by seventy-nine point one percentage points.
+
+00:02:28.902 --> 00:02:33.592
+Third, predicting contact-surface trajectories improves task success.
+
+00:02:33.752 --> 00:02:37.450
+Coordinating wrist and fingers helps avoid these baseline failures.
+
+00:02:37.602 --> 00:02:41.586
+Mean success across tasks improves by fifty percentage points.
+
+00:02:42.366 --> 00:02:48.818
+Freeing the wrist improves fingertip alignment. Reprojection corrects the resulting context-view mismatch.
+
+00:02:49.666 --> 00:02:53.875
+Coin and bulb success rise from zero to eighty-five and ninety percent.
+
+00:02:55.190 --> 00:02:58.126
+Supplementary materials are available on our website.

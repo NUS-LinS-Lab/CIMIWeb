@@ -1,0 +1,80 @@
+{
+  "version": 33,
+  "source": "CIMI_ICRA_Supplementary_v33_Josh.mp4",
+  "chapters": [
+    {
+      "title": "Overview",
+      "start": 0
+    },
+    {
+      "title": "Human demonstration",
+      "start": 25.1
+    },
+    {
+      "title": "Learning and control",
+      "start": 44.5
+    },
+    {
+      "title": "Coin picking",
+      "start": 67.2
+    },
+    {
+      "title": "1 cm cube picking",
+      "start": 77.1
+    },
+    {
+      "title": "Letter retrieval",
+      "start": 84.2
+    },
+    {
+      "title": "Bulb installation",
+      "start": 105.2
+    },
+    {
+      "title": "Shared demonstrations",
+      "start": 117.8
+    },
+    {
+      "title": "Contact cameras",
+      "start": 131.9
+    },
+    {
+      "title": "Contact-surface actions",
+      "start": 148.9
+    },
+    {
+      "title": "Contact alignment",
+      "start": 162.4
+    }
+  ],
+  "inline_comparisons": [
+    {
+      "file": "shared-hands.mp4",
+      "start": 117.8,
+      "duration": 13.5
+    },
+    {
+      "file": "contact-cameras.mp4",
+      "start": 131.9,
+      "duration": 16.6
+    },
+    {
+      "file": "contact-actions.mp4",
+      "start": 148.9,
+      "duration": 13.2
+    },
+    {
+      "file": "alignment-results.mp4",
+      "start": 162.4,
+      "duration": 12
+    }
+  ],
+  "retargeting_animation": "Unmodified ppt/media/media32.mp4 from final v33 deck",
+  "collection_clip": {
+    "file": "human-collection.mp4",
+    "source": "native_v33.mp4",
+    "start": 25.1,
+    "duration": 18.2,
+    "audio": false
+  }
+}
