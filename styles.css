@@ -231,5 +231,3 @@ h1 { font-weight: 700; }
 
 .author-notes { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 22px; margin: 8px 0 0; font-size: 14px; }
 
-.resource-pill[aria-disabled="true"] { cursor: default; opacity: .65; }
-.resource-pill[aria-disabled="true"]:hover { background: var(--blue); border-color: var(--blue); }
