@@ -228,3 +228,5 @@ h1 { font-weight: 700; }
 .authors a:hover { text-decoration: underline; }
 .authors sup, .affiliations sup { font-size: .7em; margin-left: 2px; }
 .affiliations { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 22px; margin-top: 12px; font-size: 16px; }
+
+.author-notes { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 22px; margin: 8px 0 0; font-size: 14px; }
