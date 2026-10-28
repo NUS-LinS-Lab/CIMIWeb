@@ -131,3 +131,35 @@ if (alignmentAnimation && 'IntersectionObserver' in window) {
     if (document.hidden) alignmentAnimation.pause();
   });
 }
+
+// Enhance only the overview; native controls remain the no-JavaScript fallback.
+const overviewVideo = document.getElementById('overview-video');
+const overviewCover = document.querySelector('.video-cover');
+const videoStatus = document.querySelector('.video-status');
+if (overviewVideo && overviewCover) {
+  overviewCover.hidden = false;
+  overviewVideo.controls = false;
+  const revealPlayer = () => {
+    overviewCover.hidden = true;
+    overviewVideo.controls = true;
+  };
+  overviewCover.addEventListener('click', () => {
+    videoStatus.hidden = true;
+    revealPlayer();
+    overviewVideo.focus({ preventScroll: true });
+    overviewVideo.play().catch(() => {
+      videoStatus.textContent = 'Playback could not start. Use the video controls to retry, or download the MP4.';
+      videoStatus.hidden = false;
+    });
+  });
+  overviewVideo.addEventListener('play', revealPlayer);
+  overviewVideo.addEventListener('ended', () => {
+    overviewVideo.controls = false;
+    overviewCover.hidden = false;
+  });
+  overviewVideo.addEventListener('error', () => {
+    revealPlayer();
+    videoStatus.textContent = 'The video could not load. Try reloading the page, or download the MP4.';
+    videoStatus.hidden = false;
+  });
+}

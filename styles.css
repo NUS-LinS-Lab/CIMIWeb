@@ -231,3 +231,39 @@ h1 { font-weight: 700; }
 
 .author-notes { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 22px; margin: 8px 0 0; font-size: 14px; }
 
+
+/* A lightweight cover keeps native video controls out of the opening poster. */
+.overview-player { position: relative; overflow: hidden; isolation: isolate; border: 1px solid #dce3ed; border-radius: 14px; background: #f4f7fb; box-shadow: 0 8px 28px rgb(31 55 86 / 6%); }
+.overview-player video { background: #10151c; }
+.video-cover { position: absolute; inset: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 4% 4.5% 3%; border: 0; background: linear-gradient(145deg, #f9fbff, #edf3fa); color: var(--ink); font: inherit; cursor: pointer; }
+.video-cover__heading { display: block; margin-bottom: 3%; text-align: center; }
+.video-cover__eyebrow { display: block; margin-bottom: 8px; color: #527192; font-size: clamp(9px, 1.05vw, 12px); font-weight: 600; letter-spacing: .16em; }
+.video-cover__title { display: block; color: #253e5b; font-size: clamp(21px, 3vw, 38px); font-weight: 600; line-height: 1.16; letter-spacing: -.025em; }
+.video-cover__stills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; }
+.video-cover__still { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 7px; background-image: url('assets/videos/shared-hands.jpg'); background-size: 362.26% auto; background-repeat: no-repeat; background-color: #17212c; }
+.video-cover__still--human { background-position: 6.4% 32.05%; }
+.video-cover__still--leap { background-position: 50% 32.05%; }
+.video-cover__still--wuji { background-position: 94.2% 32.05%; }
+.video-cover__still > span { position: absolute; inset: auto 0 0; padding: 15px 8px 6px; background: linear-gradient(transparent, rgb(8 15 24 / 80%)); color: white; font-size: clamp(9px, 1.1vw, 13px); text-align: left; }
+.video-cover__play { position: absolute; top: 57%; left: 50%; display: grid; place-items: center; width: 66px; height: 66px; border: 1px solid rgb(255 255 255 / 90%); border-radius: 50%; background: var(--blue); color: white; box-shadow: 0 3px 20px rgb(10 30 60 / 25%); transform: translate(-50%, -50%); transition: background .15s ease, box-shadow .15s ease; }
+.video-cover__play svg { margin-left: 3px; }
+.video-cover:hover .video-cover__play { background: #246acb; box-shadow: 0 3px 24px rgb(10 30 60 / 35%); }
+.video-cover:focus-visible { outline-offset: -5px; }
+.video-cover__watch { display: flex; align-items: center; gap: 10px; margin-top: 3%; font-size: clamp(11px, 1.25vw, 15px); font-weight: 500; color: #365574; }
+.video-cover__watch > span { padding-left: 10px; border-left: 1px solid #c8d4e2; color: #66798d; font-weight: 400; }
+.video-figure figcaption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px; margin-top: 14px; font-size: 13px; }
+.video-figure figcaption a { text-decoration: none; }
+.video-figure figcaption a:hover { text-decoration: underline; }
+.video-status { color: var(--muted); font-size: 14px; }
+@media (max-width: 540px) {
+  .overview-player { border-radius: 9px; }
+  .video-cover { padding: 3%; }
+  .video-cover__heading { margin-bottom: 3%; }
+  .video-cover__eyebrow { margin-bottom: 5px; }
+  .video-cover__title { font-size: clamp(17px, 5vw, 26px); }
+  .video-cover__stills { gap: 5px; }
+  .video-cover__still { border-radius: 4px; }
+  .video-cover__play { top: 59%; width: 46px; height: 46px; }
+  .video-cover__still > span { font-size: 8px; padding: 12px 4px 3px; }
+  .video-cover__watch { margin-top: 2%; }
+}

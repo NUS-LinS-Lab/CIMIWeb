@@ -19,7 +19,7 @@
   <title>CIMI — Contact Imitation Interface</title>
   <link rel="preload" href="assets/fonts/amarna-400.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/amarna-700.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20260923-2">
+  <link rel="stylesheet" href="styles.css?v=20261029-player">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -86,12 +86,28 @@
         <h2 id="video-title">Video</h2>
       </div>
       <figure class="media-card media-card--wide video-figure">
-        <video id="overview-video" controls playsinline preload="none" poster="assets/videos/overview.jpg" aria-label="CIMI video">
-          <source src="assets/videos/cimi-v33.mp4" type="video/mp4">
-          <track kind="captions" src="assets/videos/cimi-v33.en.vtt" srclang="en" label="English">
-          Your browser does not support embedded video. <a href="assets/videos/cimi-v33.mp4">Download the video</a>.
-        </video>
-        <figcaption>Narrated supplementary video · 2:59 · <a href="assets/videos/cimi-v33.mp4" download>Download MP4</a></figcaption>
+        <div class="overview-player">
+          <video id="overview-video" controls playsinline preload="none" poster="assets/videos/overview.jpg" aria-label="CIMI video" tabindex="0">
+            <source src="assets/videos/cimi-v33.mp4" type="video/mp4">
+            <track kind="captions" src="assets/videos/cimi-v33.en.vtt" srclang="en" label="English">
+            Your browser does not support embedded video. <a href="assets/videos/cimi-v33.mp4">Download the video</a>.
+          </video>
+          <button class="video-cover" type="button" aria-label="Play CIMI overview video, 2 minutes 59 seconds" aria-controls="overview-video" hidden>
+            <span class="video-cover__heading" aria-hidden="true">
+              <span class="video-cover__eyebrow">CIMI · PROJECT FILM</span>
+              <span class="video-cover__title">Dexterous skills.<br>From human to robot.</span>
+            </span>
+            <span class="video-cover__stills" aria-hidden="true">
+              <span class="video-cover__still video-cover__still--human"><span>Human demonstration</span></span>
+              <span class="video-cover__still video-cover__still--leap"><span>LEAP</span></span>
+              <span class="video-cover__still video-cover__still--wuji"><span>Wuji</span></span>
+            </span>
+            <span class="video-cover__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="video-cover__watch" aria-hidden="true">Watch overview <span>2:59</span></span>
+          </button>
+        </div>
+        <figcaption><span>Narrated project overview · 2:59</span><a href="assets/videos/cimi-v33.mp4" download>Download MP4 <span aria-hidden="true">↓</span></a></figcaption>
+        <p class="video-status" role="status" hidden></p>
       </figure>
     </section>
 
@@ -337,6 +353,6 @@
     </footer>
   </main>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20261029-player" defer></script>
 </body>
 </html>
