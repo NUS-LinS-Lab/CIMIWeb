@@ -19,7 +19,7 @@
   <title>CIMI — Contact Imitation Interface</title>
   <link rel="preload" href="assets/fonts/amarna-400.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/amarna-700.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261029-player">
+  <link rel="stylesheet" href="styles.css?v=20261029-all-players">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -48,7 +48,7 @@
         <span><a href="https://ariszxxu.github.io/">Zhixuan Xu</a><sup>1,*</sup></span>,
         <span>Yichen Li<sup>1,2,*</sup></span>,
         <span>Bingchen Wu<sup>1,2</sup></span>,
-        <span>Rui Wang<sup>1,2</sup></span>,
+        <span>Rui Wang<sup>1,2</sup></span>,<br>
         <span><a href="https://houyiwen.github.io/">Yiwen Hou</a><sup>1</sup></span>,
         <span><a href="https://panda-shawn.github.io/">Zixuan Liu</a><sup>1</sup></span>,
         <span>Tianyu Qiu<sup>2,3</sup></span>,
@@ -86,7 +86,7 @@
         <h2 id="video-title">Video</h2>
       </div>
       <figure class="media-card media-card--wide video-figure">
-        <div class="overview-player">
+        <div class="video-player">
           <video id="overview-video" controls playsinline preload="none" poster="assets/videos/overview.jpg" aria-label="CIMI video" tabindex="0">
             <source src="assets/videos/cimi-v33.mp4" type="video/mp4">
             <track kind="captions" src="assets/videos/cimi-v33.en.vtt" srclang="en" label="English">
@@ -167,7 +167,7 @@
                 <source src="assets/videos/contact-alignment.mp4" type="video/mp4">
                 <a href="assets/videos/contact-alignment.mp4">Download video</a>
               </video>
-              <figcaption>Contact positions align as the wrist and fingers move. The animation loops automatically; use the controls to pause.</figcaption>
+              <figcaption>Contact positions align as the wrist and fingers move. The animation loops during playback; use the controls to pause.</figcaption>
             </figure>
           </article>
           <article class="preprocessing-step">
@@ -353,6 +353,6 @@
     </footer>
   </main>
 
-  <script src="script.js?v=20261029-player" defer></script>
+  <script src="script.js?v=20261029-all-players" defer></script>
 </body>
 </html>

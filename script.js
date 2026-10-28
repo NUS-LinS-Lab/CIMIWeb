@@ -36,7 +36,6 @@ if (demoButtons.length) {
 // Keep narration and task clips from playing over one another.
 document.querySelectorAll('video').forEach((video) => {
   video.addEventListener('play', () => {
-    if (video.closest('.alignment-animation')) return;
     document.querySelectorAll('video').forEach((other) => {
       if (other !== video) other.pause();
     });
@@ -115,51 +114,79 @@ setupPanels({
   names: ['Across hands', 'Contact cameras', 'Contact-surface actions', 'Contact alignment']
 });
 
-// Loop the silent retargeting animation only when it is visible on screen.
+// Give every video the same launch treatment, retaining native no-script controls.
+const playIcon = document.querySelector('.video-cover__play');
+document.querySelectorAll('video').forEach((video, index) => {
+  let player = video.closest('.video-player');
+  if (!player) {
+    player = document.createElement('div');
+    player.className = 'video-player';
+    video.before(player);
+    player.append(video);
+  }
+  if (!video.id) video.id = `clip-video-${index}`;
+  video.tabIndex = 0;
+  let cover = player.querySelector('.video-cover');
+  if (!cover) {
+    cover = document.createElement('button');
+    cover.className = 'video-cover video-cover--clip';
+    cover.type = 'button';
+    cover.setAttribute('aria-label', `Play ${video.getAttribute('aria-label') || 'video'}`);
+    cover.setAttribute('aria-controls', video.id);
+    cover.append(playIcon.cloneNode(true));
+    player.append(cover);
+  }
+  let status = player.parentElement.querySelector('.video-status');
+  if (!status) {
+    status = document.createElement('p');
+    status.className = 'video-status';
+    status.setAttribute('role', 'status');
+    status.hidden = true;
+    player.after(status);
+  }
+  cover.hidden = false;
+  video.controls = false;
+  const revealPlayer = () => {
+    cover.hidden = true;
+    video.controls = true;
+  };
+  const showCover = () => {
+    video.controls = false;
+    cover.hidden = false;
+  };
+  cover.addEventListener('click', () => {
+    status.hidden = true;
+    revealPlayer();
+    video.focus({ preventScroll: true });
+    video.play().catch((error) => {
+      // Switching panels or starting another clip can interrupt a pending play.
+      if (error.name === 'AbortError') {
+        if (video.paused) showCover();
+        return;
+      }
+      status.textContent = 'Playback could not start. Use the video controls to retry.';
+      status.hidden = false;
+    });
+  });
+  video.addEventListener('play', revealPlayer);
+  video.addEventListener('ended', showCover);
+  video.addEventListener('error', () => {
+    revealPlayer();
+    status.textContent = 'The video could not load. Try reloading the page.';
+    status.hidden = false;
+  });
+});
+
+// The retargeting clip starts on request and loops until paused or out of view.
 const alignmentAnimation = document.querySelector('.alignment-animation video');
 if (alignmentAnimation && 'IntersectionObserver' in window) {
   const animationObserver = new IntersectionObserver((entries) => {
-    const visible = entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.15);
-    if (visible && !document.hidden) {
-      alignmentAnimation.play().catch(() => { /* Native play control remains available. */ });
-    } else {
+    if (!entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.15)) {
       alignmentAnimation.pause();
     }
   }, { threshold: 0.15 });
   animationObserver.observe(alignmentAnimation);
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) alignmentAnimation.pause();
-  });
-}
-
-// Enhance only the overview; native controls remain the no-JavaScript fallback.
-const overviewVideo = document.getElementById('overview-video');
-const overviewCover = document.querySelector('.video-cover');
-const videoStatus = document.querySelector('.video-status');
-if (overviewVideo && overviewCover) {
-  overviewCover.hidden = false;
-  overviewVideo.controls = false;
-  const revealPlayer = () => {
-    overviewCover.hidden = true;
-    overviewVideo.controls = true;
-  };
-  overviewCover.addEventListener('click', () => {
-    videoStatus.hidden = true;
-    revealPlayer();
-    overviewVideo.focus({ preventScroll: true });
-    overviewVideo.play().catch(() => {
-      videoStatus.textContent = 'Playback could not start. Use the video controls to retry, or download the MP4.';
-      videoStatus.hidden = false;
-    });
-  });
-  overviewVideo.addEventListener('play', revealPlayer);
-  overviewVideo.addEventListener('ended', () => {
-    overviewVideo.controls = false;
-    overviewCover.hidden = false;
-  });
-  overviewVideo.addEventListener('error', () => {
-    revealPlayer();
-    videoStatus.textContent = 'The video could not load. Try reloading the page, or download the MP4.';
-    videoStatus.hidden = false;
   });
 }
